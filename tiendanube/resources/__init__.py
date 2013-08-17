@@ -8,18 +8,18 @@ from .base import ListResource, Resource
 
 class CustomerResource(ListResource):
 
-	resource_name = 'customers'
+    resource_name = 'customers'
 
 
 class ProductResource(ListResource):
 
-	resource_name = 'products'
+    resource_name = 'products'
 
 
 class StoreResource(Resource):
 
-	def get(self):
-		"""
-		Get a single store.
-		"""
-		return bunchify(json.loads(self._make_request('store').content))
+    def get(self):
+        """
+        Get a single store.
+        """
+        return bunchify(json.loads(self._make_request('store').content))
