@@ -3,6 +3,8 @@ import json
 
 from bunch import bunchify
 
+from .exceptions import APIError
+
 
 class Resource(object):
 
@@ -11,7 +13,9 @@ class Resource(object):
         self._http_client = api_client
 
     def _make_request(self, resource, **kwargs):
-        return self._http_client.make_request(self.store_id, resource, **kwargs)
+        response = self._http_client.make_request(self.store_id, resource, **kwargs)
+        if response.status_code != 200:
+            raise APIError(response.reason, response.status_code)
 
 
 class ListResource(Resource):
