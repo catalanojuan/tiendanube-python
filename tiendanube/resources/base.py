@@ -16,7 +16,7 @@ class Resource(object):
 class ListResource(Resource):
 
     def get(self, id):
-        return bunchify(json.loads(self._make_request(self.resource_name, str(id)).content))
+        return bunchify(json.loads(self._make_request(self.resource_name, resource_id=str(id)).content))
 
     def list(self, filters={}, fields={}):
         """
@@ -26,3 +26,34 @@ class ListResource(Resource):
         if fields:
             extra['fields'] = fields
         return bunchify(json.loads(self._make_request(self.resource_name, extra=extra).content))
+
+
+class ListSubResource(ListResource):
+
+    def __init__(self, resource, resource_id, subresource):
+        super(ListSubResource, self).__init__(resource._http_client, resource.store_id)
+        self.resource_name = resource.resource_name
+        self.resource_id = resource_id
+        self.subresource = subresource
+
+    def get(self, id):
+        return bunchify(json.loads(self._make_request(
+            self.resource_name,
+            resource_id=str(self.resource_id),
+            subresource=self.subresource,
+            subresource_id=str(id)).content)
+        )
+
+    def list(self, filters={}, fields={}):
+        """
+        Get the list of customers for a store.
+        """
+        extra = filters
+        if fields:
+            extra['fields'] = fields
+        return bunchify(json.loads(self._make_request(
+            self.resource_name,
+            resource_id=str(self.resource_id),
+            subresource=self.subresource,
+            extra=extra).content)
+        )
