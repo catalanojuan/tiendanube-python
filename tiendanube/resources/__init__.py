@@ -4,7 +4,7 @@ import json
 from bunch import bunchify
 
 from .base import ListResource, Resource
-
+from .decorators import subresources
 
 class CategoryResource(ListResource):
 
@@ -21,6 +21,7 @@ class OrderResource(ListResource):
     resource_name = 'orders'
 
 
+@subresources(['variants', 'images'])
 class ProductResource(ListResource):
 
     resource_name = 'products'
