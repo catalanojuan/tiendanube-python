@@ -10,8 +10,9 @@ class Resource(object):
         self.store_id = store_id
         self._http_client = api_client
 
-    def _make_request(self, resource, endpoint=None, verb='GET', extra=None):
-        return self._http_client.make_request(self.store_id, resource, endpoint, verb, extra)
+    def _make_request(self, resource, **kwargs):
+        return self._http_client.make_request(self.store_id, resource, **kwargs)
+
 
 class ListResource(Resource):
 
