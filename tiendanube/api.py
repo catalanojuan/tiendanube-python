@@ -38,6 +38,6 @@ class APIClient(object):
         url.path.segments.extend(self.get_options(kwargs))
 
         url.args = kwargs.get('extra')
-
         logging.debug('URL: {}'.format(str(url)))
+
         return method(str(url), headers=self.headers)
