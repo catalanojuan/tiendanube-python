@@ -10,7 +10,7 @@ setup(
     version = '1.0',
     description = '',
     license = 'MIT',
-    long_description = read('README.md'),
+    long_description = read('README.rst'),
     url = 'https://github.com/catalanojuan/tiendanube-python',
 
     author = 'Juan Catalano',
