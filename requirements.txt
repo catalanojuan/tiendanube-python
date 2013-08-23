@@ -1,6 +1,5 @@
 argparse==1.2.1
 bunch==1.0.1
-distribute==0.7.3
 furl==0.3.4
 ipython==1.0.0
 mock==1.0.1
