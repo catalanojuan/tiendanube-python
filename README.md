@@ -1,4 +1,4 @@
-tiendanube-python
+tiendanube-python [![Build Status](https://magnum.travis-ci.com/catalanojuan/tiendanube-python.png?token=pipxqNb1xqzs84Jm1hsG&branch=master)](https://magnum.travis-ci.com/catalanojuan/tiendanube-python)
 =================
 
 TiendaNube API Python Client.
@@ -50,4 +50,11 @@ Query images for a given product:
 > p = store.products.get(911)
 > [i.src for i in p.images.list()]
 [u'http://example.com/image.jpg']
+```
+
+Development
+-----------
+Running tests:
+```bash
+$ python -m tests.run
 ```
