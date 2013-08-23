@@ -9,13 +9,15 @@ TiendaNube API Python Client.
 Install
 -------
 
+To install::
+
     $ git clone git@github.com:catalanojuan/tiendanube-python.git
     $ pip install -r tiendanube-python/requirements.txt
 
 Usage
 -----
 
-Query list of products:
+Query list of products::
 
     > api_key = 'API_KEY'
     > from tiendanube import NubeClient
@@ -27,7 +29,7 @@ Query list of products:
      u'hola',
      u'Producto de Prueba']
 
-Query one product in particular:
+Query one product in particular::
 
     > api_key = 'API_KEY'
     > from tiendanube import NubeClient
@@ -37,7 +39,7 @@ Query one product in particular:
     > p.name.es
     u'Mi primer producto'
 
-Query images for a given product:
+Query images for a given product::
 
     > api_key = 'API_KEY'
     > from tiendanube import NubeClient
@@ -50,7 +52,7 @@ Query images for a given product:
 Development
 -----------
 
-Running tests: 
+Running tests::
 
     $ python -m tests.run``
 
