@@ -54,5 +54,5 @@ Development
 
 Running tests::
 
-    $ python -m tests.run``
+    $ python -m tests.run
 
