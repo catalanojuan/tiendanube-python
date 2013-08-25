@@ -12,6 +12,8 @@ setup(
     license = 'MIT',
     long_description = read('README.rst'),
     url = 'https://github.com/catalanojuan/tiendanube-python',
+    download_url = 'https://github.com/catalanojuan/tiendanube-python/tarball/1.0',
+
 
     author = 'Juan Catalano',
     author_email = 'catalanojuan@gmail.com',
