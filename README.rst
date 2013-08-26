@@ -9,10 +9,7 @@ TiendaNube API Python Client.
 Install
 -------
 
-To install::
-
-    $ git clone git@github.com:catalanojuan/tiendanube-python.git
-    $ pip install -r tiendanube-python/requirements.txt
+Just ``pip install tiendanube``.
 
 Usage
 -----
