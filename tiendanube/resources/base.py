@@ -21,7 +21,7 @@ class Resource(object):
 
     def _make_request(self, resource, **kwargs):
         response = self._http_client.make_request(self.store_id, resource, **kwargs)
-        if response.status_code != 200:
+        if response.status_code not in [200, 201]:
             raise APIError(response.reason, response.status_code)
         return response
 
@@ -39,6 +39,9 @@ class ListResource(Resource):
         if fields:
             extra['fields'] = fields
         return bunchify(json.loads(self._make_request(self.resource_name, extra=extra).content))
+
+    def add(self, resource_dict):
+        return bunchify(json.loads(self._make_request(self.resource_name, data=resource_dict, verb='post').text))
 
 
 class ListSubResource(ListResource):
@@ -70,3 +73,11 @@ class ListSubResource(ListResource):
             subresource=self.subresource,
             extra=extra).content)
         )
+
+    def add(self, subresource_dict):
+        return bunchify(json.loads(self._make_request(
+            self.resource_name,
+            resource_id=str(self.resource_id),
+            subresource=self.subresource,
+            data=subresource_dict, verb='post').text))
+
