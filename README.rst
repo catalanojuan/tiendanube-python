@@ -1,8 +1,8 @@
 tiendanube-python
 =================
 
-.. image:: https://magnum.travis-ci.com/catalanojuan/tiendanube-python.png?token=pipxqNb1xqzs84Jm1hsG&branch=master
-   :target: https://magnum.travis-ci.com/catalanojuan/tiendanube-python
+.. image:: https://travis-ci.org/catalanojuan/tiendanube-python.png?branch=master   
+   :target: https://travis-ci.org/catalanojuan/tiendanube-python
 
 TiendaNube API Python Client.
 
