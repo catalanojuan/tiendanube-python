@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 import logging
 
 import requests
@@ -6,6 +7,22 @@ from furl import furl
 
 
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+
+
+def _do_verb(verb, url, payload, headers):
+    params = {
+        'url': url,
+        'headers': headers
+    }
+    method = getattr(requests, verb)
+
+    if verb == 'post':
+        params['headers']['Content-Type'] = 'application/json; charset=utf-8'
+        params['data'] = json.dumps(payload)
+    elif verb == 'get':
+        params['params'] = payload
+
+    return method(**params)
 
 
 class APIClient(object):
@@ -24,8 +41,8 @@ class APIClient(object):
         return [args[k] for k in self.ARGS if k in args and args[k]]
 
     def make_request(self, id, resource, **kwargs):
-        verb = kwargs.get('verb', 'GET')
-        method = getattr(requests, verb.lower())
+        verb = kwargs.get('verb', 'GET').lower()
+
         url = furl(self.API_ENDPOINT)
         url.path.segments = [
             self.API_VERSION,
@@ -37,7 +54,6 @@ class APIClient(object):
 
         url.path.segments.extend(self.get_options(kwargs))
 
-        url.args = kwargs.get('extra')
-        logging.debug('URL: {}'.format(str(url)))
+        payload = kwargs.get('extra') or kwargs.get('data')
 
-        return method(str(url), headers=self.headers)
+        return _do_verb(verb, str(url), payload=payload, headers=self.headers)
