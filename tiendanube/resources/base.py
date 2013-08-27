@@ -21,8 +21,10 @@ class Resource(object):
 
     def _make_request(self, resource, **kwargs):
         response = self._http_client.make_request(self.store_id, resource, **kwargs)
+
         if response.status_code not in [200, 201]:
-            raise APIError(response.reason, response.status_code)
+            raise APIError('{}. {}'.format(response.reason, response.text),
+                           response.status_code)
         return response
 
 
