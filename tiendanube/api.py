@@ -16,7 +16,7 @@ def _do_verb(verb, url, payload, headers):
     }
     method = getattr(requests, verb)
 
-    if verb == 'post':
+    if verb in ['post', 'put']:
         params['headers']['Content-Type'] = 'application/json; charset=utf-8'
         params['data'] = json.dumps(payload)
     elif verb == 'get':
