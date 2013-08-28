@@ -897,6 +897,25 @@ class ProductResourceWriteTest(unittest.TestCase):
             data=json.dumps({'id': 46, 'name': 'test prod'})
         )
 
+    @patch('tiendanube.api.requests')
+    def test_update_product(self, requests_mock):
+        response_mock = Mock()
+        response_mock.status_code = 200
+        response_mock.text = json.dumps(
+            {'id': 991, 'name': 'test prod'},
+        )
+        requests_mock.put.return_value = response_mock
+        cli = APIClient('test_api_key', 'test user agent')
+        p = ProductResource(cli, '46')
+
+        p.update({'id': 991, 'name': 'test prod updated'})
+
+        requests_mock.put.assert_called_with(
+            url='https://api.tiendanube.com/v1/46/products/991',
+            headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
+            data=json.dumps({'id': 991, 'name': 'test prod updated'})
+        )
+
 
 class CustomerResourceWriteTest(unittest.TestCase):
 
@@ -921,6 +940,25 @@ class CustomerResourceWriteTest(unittest.TestCase):
             url='https://api.tiendanube.com/v1/46/customers',
             headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
             data=json.dumps({'id': 46, 'name': 'test cust'})
+        )
+
+    @patch('tiendanube.api.requests')
+    def test_update_customer(self, requests_mock):
+        response_mock = Mock()
+        response_mock.status_code = 200
+        response_mock.text = json.dumps(
+            {'id': 991, 'name': 'test cust'},
+        )
+        requests_mock.put.return_value = response_mock
+        cli = APIClient('test_api_key', 'test user agent')
+        c = CustomerResource(cli, '46')
+
+        c.update({'id': 991, 'name': 'test cust updated'})
+
+        requests_mock.put.assert_called_with(
+            url='https://api.tiendanube.com/v1/46/customers/991',
+            headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
+            data=json.dumps({'id': 991, 'name': 'test cust updated'})
         )
 
 
@@ -949,6 +987,24 @@ class OrderResourceWriteTest(unittest.TestCase):
             data=json.dumps({'id': 46, 'name': 'test order'})
         )
 
+    @patch('tiendanube.api.requests')
+    def test_update_order(self, requests_mock):
+        response_mock = Mock()
+        response_mock.status_code = 200
+        response_mock.text = json.dumps(
+            {'id': 991, 'name': 'test order'},
+        )
+        requests_mock.put.return_value = response_mock
+        cli = APIClient('test_api_key', 'test user agent')
+        o = OrderResource(cli, '46')
+
+        o.update({'id': 991, 'name': 'test order updated'})
+
+        requests_mock.put.assert_called_with(
+            url='https://api.tiendanube.com/v1/46/orders/991',
+            headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
+            data=json.dumps({'id': 991, 'name': 'test order updated'})
+        )
 
 class ScriptResourceWriteTest(unittest.TestCase):
 
@@ -975,6 +1031,24 @@ class ScriptResourceWriteTest(unittest.TestCase):
             data=json.dumps({'id': 46, 'name': 'test script'})
         )
 
+    @patch('tiendanube.api.requests')
+    def test_update_script(self, requests_mock):
+        response_mock = Mock()
+        response_mock.status_code = 200
+        response_mock.text = json.dumps(
+            {'id': 991, 'name': 'test script'},
+        )
+        requests_mock.put.return_value = response_mock
+        cli = APIClient('test_api_key', 'test user agent')
+        s = ScriptResource(cli, '46')
+
+        s.update({'id': 991, 'name': 'test script updated'})
+
+        requests_mock.put.assert_called_with(
+            url='https://api.tiendanube.com/v1/46/scripts/991',
+            headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
+            data=json.dumps({'id': 991, 'name': 'test script updated'})
+        )
 
 class WebhookResourceWriteTest(unittest.TestCase):
 
@@ -1001,6 +1075,24 @@ class WebhookResourceWriteTest(unittest.TestCase):
             data=json.dumps({'id': 46, 'name': 'test webhook'})
         )
 
+    @patch('tiendanube.api.requests')
+    def test_update_webhook(self, requests_mock):
+        response_mock = Mock()
+        response_mock.status_code = 200
+        response_mock.text = json.dumps(
+            {'id': 991, 'name': 'test web'},
+        )
+        requests_mock.put.return_value = response_mock
+        cli = APIClient('test_api_key', 'test user agent')
+        w = WebhookResource(cli, '46')
+
+        w.update({'id': 991, 'name': 'test web updated'})
+
+        requests_mock.put.assert_called_with(
+            url='https://api.tiendanube.com/v1/46/webhooks/991',
+            headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
+            data=json.dumps({'id': 991, 'name': 'test web updated'})
+        )
 
 class CategoryResourceWriteTest(unittest.TestCase):
 
@@ -1025,4 +1117,23 @@ class CategoryResourceWriteTest(unittest.TestCase):
             url='https://api.tiendanube.com/v1/46/categories',
             headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
             data=json.dumps({'id': 46, 'name': 'test category'})
+        )
+
+    @patch('tiendanube.api.requests')
+    def test_update_category(self, requests_mock):
+        response_mock = Mock()
+        response_mock.status_code = 200
+        response_mock.text = json.dumps(
+            {'id': 991, 'name': 'test cat'},
+        )
+        requests_mock.put.return_value = response_mock
+        cli = APIClient('test_api_key', 'test user agent')
+        c = CategoryResource(cli, '46')
+
+        c.update({'id': 991, 'name': 'test cat updated'})
+
+        requests_mock.put.assert_called_with(
+            url='https://api.tiendanube.com/v1/46/categories/991',
+            headers={'Authentication': 'bearer test_api_key', 'User-Agent': 'test user agent', 'Content-Type': 'application/json; charset=utf-8'},
+            data=json.dumps({'id': 991, 'name': 'test cat updated'})
         )

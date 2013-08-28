@@ -45,6 +45,9 @@ class ListResource(Resource):
     def add(self, resource_dict):
         return bunchify(json.loads(self._make_request(self.resource_name, data=resource_dict, verb='post').text))
 
+    def update(self, resource_update_dict):
+        res_id = str(resource_update_dict['id'])
+        return bunchify(json.loads(self._make_request(self.resource_name, resource_id=res_id, data=resource_update_dict, verb='put').text))
 
 class ListSubResource(ListResource):
 
@@ -77,9 +80,7 @@ class ListSubResource(ListResource):
         )
 
     def add(self, subresource_dict):
-        return bunchify(json.loads(self._make_request(
-            self.resource_name,
-            resource_id=str(self.resource_id),
-            subresource=self.subresource,
-            data=subresource_dict, verb='post').text))
+        raise NotImplementedError('Sub resource add is not yet supported.')
 
+    def update(self, subresource_update_dict):
+        raise NotImplementedError('Sub resource update is not yet supported.')
