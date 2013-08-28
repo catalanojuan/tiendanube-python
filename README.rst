@@ -46,6 +46,22 @@ Query images for a given product::
     > [i.src for i in p.images.list()]
     [u'http://example.com/image.jpg']
 
+Add a product to the store::
+
+    > api_key = 'API_KEY'
+    > from tiendanube import NubeClient
+    > client = NubeClient(api_key)
+    > store = client.get_store(1)
+    > p = store.products.add({ "name": {"es": "My new product"} })
+
+Update a product on the store::
+
+    > api_key = 'API_KEY'
+    > from tiendanube import NubeClient
+    > client = NubeClient(api_key)
+    > store = client.get_store(1)
+    > p = store.products.update({ "id":123, "name": {"es": "My AWESOME product"} })
+
 Development
 -----------
 
