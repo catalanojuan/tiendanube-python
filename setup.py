@@ -11,12 +11,12 @@ setup(
         'tiendanube',
         'tiendanube.resources',
     ],
-    version = '1.0',
+    version = '1.1',
     description = '',
     license = 'MIT',
     long_description = read('README.rst'),
     url = 'https://github.com/catalanojuan/tiendanube-python',
-    download_url = 'https://github.com/catalanojuan/tiendanube-python/tarball/1.0',
+    download_url = 'https://github.com/catalanojuan/tiendanube-python/tarball/1.1',
 
 
     author = 'Juan Catalano',
