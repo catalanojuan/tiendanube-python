@@ -31,7 +31,7 @@ setup(
         "orderedmultidict==0.7.1",
         "py==1.4.15",
         "pytz==2013b",
-        "requests==1.2.3",
+        "requests==2.20.0",
         "wsgiref==0.1.2",
     ],
 
