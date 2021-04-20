@@ -4,7 +4,7 @@ furl==0.3.4
 ipython==1.0.0
 mock==1.0.1
 orderedmultidict==0.7.1
-py==1.4.15
+py==1.10.0
 pytz==2013b
 requests==1.2.3
 wsgiref==0.1.2
