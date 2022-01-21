@@ -26,7 +26,7 @@ setup(
         "argparse==1.2.1",
         "bunch==1.0.1",
         "furl==0.3.4",
-        "ipython==1.0.0",
+        "ipython==7.16.3",
         "mock==1.0.1",
         "orderedmultidict==0.7.1",
         "py==1.4.15",
